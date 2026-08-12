@@ -1,0 +1,66 @@
+package com.abc.stack;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class AsteroidCollisions {
+
+	public static void main(String[] args) {
+		
+		  ArrayList<Integer> list = new ArrayList<>();
+
+		  	list.add(5);
+	        list.add(7);
+	        list.add(1);
+	        list.add(2);
+	        list.add(1);
+	        list.add(-5);
+	        list.add(-7);
+	        list.add(17);
+	        list.add(19);
+
+	        
+//	        list = [5, 7, 1, 2, 1, -5, -7, 17, 19]
+	        
+	        Stack<Integer> s = new Stack<Integer>();
+	        
+	        for(int i = 0; i < list.size(); i++)
+	        {
+	        	if(list.get(i) > 0)
+	        	{
+	        		s.add(list.get(i));
+	        	}
+	        	else
+	        	{
+//	        		list.get(i) ==> -7
+//	        		s.peek() ==> error
+	        		while(!s.isEmpty() && s.peek() > 0 && -list.get(i) > s.peek())
+	        		{
+	        			s.pop();
+	        		}
+	        		if(s.isEmpty() || s.peek() < 0)
+	        		{
+	        			s.add(list.get(i));
+	        		}
+	        		if(-list.get(i) == s.peek())
+	        		{
+	        			s.pop();
+	        		}
+	        	}
+	        }
+	        
+	        System.out.println(s);
+	        
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
