@@ -1,0 +1,57 @@
+package com.abc.stack;
+
+import java.util.Stack;
+
+class BackspaceLogic
+{
+	public boolean handler()
+	{
+		String s1 = "ab#g";
+		String s2 = "ab#g";
+		
+		Stack<Character> st1 = new Stack<Character>();
+		
+		for(int i = 0; i < s1.length(); i++)
+		{
+			if(s1.charAt(i) != '#')
+			{
+				st1.add(s1.charAt(i));
+			}
+			else
+			{
+				st1.pop();
+			}
+		}
+		
+		Stack<Character> st2 = new Stack<Character>();
+		
+		for(int i = 0; i < s2.length(); i++)
+		{
+			if(s2.charAt(i) != '#')
+			{
+				st2.add(s2.charAt(i));
+			}
+			else
+			{
+				st2.pop();
+			}
+		}
+		
+		if(st1.equals(st2))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+public class BackspaceCompare {
+	public static void main(String[] args) {
+	
+		boolean recievedOutput = new BackspaceLogic().handler();
+		System.out.println(recievedOutput);
+	}
+}
