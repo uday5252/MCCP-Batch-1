@@ -1,0 +1,262 @@
+Here are the questions along with their code solutions and simple explanations for each part of your file:
+
+---
+
+### 1. Right Shift Operator
+
+* **Question:** Write a program to take an integer input from the user, divide it by 2 using the right shift operator (`num >> 1`), and print the result.
+* **Answer:**
+```java
+Scanner scan = new Scanner(System.in);    
+System.out.println("Enter the number:");
+int num = scan.nextInt();
+
+int result = num >> 1; // Divides the number by 2
+System.out.println(result);
+
+```
+
+
+
+---
+
+### 2. Left Shift Operator
+
+* **Question:** Write a program to take an integer input from the user, multiply it by 2 using the left shift operator (`num << 1`), and print the result.
+* **Answer:**
+```java
+Scanner scan = new Scanner(System.in);    
+System.out.println("Enter the number:");
+int num = scan.nextInt();
+
+int result = num << 1; // Multiplies the number by 2
+System.out.println(result);
+
+```
+
+
+
+---
+
+### 3. Check Least Significant Bit (Bitwise AND)
+
+* **Question:** Write a program to check if the last bit (LSB) of an entered number is `1` using a bitwise AND operation (`num & 1`) and count it.
+* **Answer:**
+```java
+Scanner scan = new Scanner(System.in);    
+System.out.println("Enter the number:");
+int num = scan.nextInt(); // e.g., 13
+
+int count = 0;
+int result = num & 1; // Checks if the last binary bit is 1
+if(result == 1) {
+    count++;
+}
+System.out.println(count);  
+
+```
+
+
+
+---
+
+### 4. HashMap Ordering
+
+* **Question:** Create a standard `HashMap`, add key-value pairs out of order, and print them to show that `HashMap` does not maintain any specific sorting or insertion order.
+* **Answer:**
+```java
+HashMap<Integer, String> map = new HashMap<>();
+map.put(50, "A");
+map.put(10, "B");
+map.put(40, "C");
+map.put(20, "D");
+
+System.out.println(map); // Prints in random/unordered layout
+
+```
+
+
+
+---
+
+### 5. LinkedHashMap Insertion Order
+
+* **Question:** Create a `LinkedHashMap`, add key-value pairs, and print them to show that `LinkedHashMap` maintains the exact order in which elements were inserted.
+* **Answer:**
+```java
+LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+map.put(50, "A");
+map.put(10, "B");
+map.put(40, "C");
+map.put(20, "D");
+
+System.out.println(map); // Preserves insertion order
+
+```
+
+
+
+---
+
+### 6. Dynamic Department Map (LinkedHashMap Loop)
+
+* **Question:** Write an interactive program using a `LinkedHashMap` and a `Scanner` inside a loop to keep asking the user for department names and HODs until they type `"n"` to stop.
+* **Answer:**
+```java
+Scanner scan = new Scanner(System.in);
+LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
+while(true) {
+    System.out.println("Enter the department name:");
+    String dName = scan.next();
+
+    System.out.println("Enter the department HOD:");
+    String dHod = scan.next();
+
+    map.put(dName, dHod);
+
+    System.out.println("Do you want to continue? type y-yes OR n-no");
+    String optionChoosen = scan.next().toLowerCase();
+    if(optionChoosen.equals("n")) {
+        break;
+    }
+}
+System.out.println(map);
+
+```
+
+
+
+---
+
+### 7. Interactive Reverse TreeMap Keys
+
+* **Question:** Write an interactive program using a `TreeMap` with `Collections.reverseOrder()` to take department and HOD inputs from a user, and print only the keys (`keySet()`) sorted in reverse alphabetical order.
+* **Answer:**
+```java
+Scanner scan = new Scanner(System.in);
+TreeMap<String, String> map = new TreeMap<>(Collections.reverseOrder());
+
+while(true) {
+    System.out.println("Enter the department name:");
+    String dName = scan.next();
+
+    System.out.println("Enter the department HOD:");
+    String dHod = scan.next();
+
+    map.put(dName, dHod);
+
+    System.out.println("Do you want to continue? type y-yes OR n-no");
+    String optionChoosen = scan.next().toLowerCase();
+    if(optionChoosen.equals("n")) {
+        break;
+    }
+}
+System.out.println(map.keySet());
+
+```
+
+
+
+---
+
+### 8. Iterating Sorted TreeMap (Default A-Z Order)
+
+* **Question:** Create a `TreeMap` with preset Indian departments and HODs, and use `map.entrySet()` inside a loop to print them neatly in default alphabetical order.
+* **Answer:**
+```java
+TreeMap<String, String> map = new TreeMap<>();
+map.put("Physics", "Dr. H. J. Bhabha");
+map.put("Mathematics", "Dr. C. S. Seshadri");
+map.put("Computer Science", "Dr. A. K. Choudhury");
+map.put("Chemistry", "Dr. C. N. R. Rao");
+
+for(Map.Entry<String, String> i : map.entrySet()) {
+    System.out.println("Department Name: " + i.getKey() + " Department HOD: " + i.getValue());
+}
+
+```
+
+
+
+---
+
+### 9. Iterating Reversed TreeMap (Z-A Order)
+
+* **Question:** Create a `TreeMap` using `Collections.reverseOrder()` with preset Indian departments and HODs, and print them sorted in reverse alphabetical order.
+* **Answer:**
+```java
+TreeMap<String, String> map = new TreeMap<>(Collections.reverseOrder());
+map.put("Physics", "Dr. H. J. Bhabha");
+map.put("Mathematics", "Dr. C. S. Seshadri");
+map.put("Computer Science", "Dr. A. K. Choudhury");
+map.put("Chemistry", "Dr. C. N. R. Rao");
+
+for(Map.Entry<String, String> i : map.entrySet()) {
+    System.out.println("Department Name: " + i.getKey() + " Department HOD: " + i.getValue());
+}
+
+```
+
+
+
+---
+
+### 10. Find HOD of the "Largest" Department (Reverse TreeMap + `firstKey()`)
+
+* **Question:** Using a reverse-ordered `TreeMap`, find the first key using `map.firstKey()` (which will be the alphabetically largest key, like *Physics*) and print its HOD value.
+* **Answer:**
+```java
+TreeMap<String, String> map = new TreeMap<>(Collections.reverseOrder());
+map.put("Physics", "Dr. H. J. Bhabha");
+map.put("Mathematics", "Dr. C. S. Seshadri");
+map.put("Computer Science", "Dr. A. K. Choudhury");
+map.put("Chemistry", "Dr. C. N. R. Rao");
+
+String largestSubjectName = map.firstKey(); // Retrieves "Physics" in reverse order
+System.out.println(map.get(largestSubjectName)); // Prints Dr. H. J. Bhabha
+
+```
+
+
+
+---
+
+### 11. Find HOD of the "Smallest" Department (Default TreeMap + `firstKey()`)
+
+* **Question:** Using a default ascending `TreeMap`, find the first key using `map.firstKey()` (which will be the alphabetically smallest key, like *Chemistry*) and print its HOD value.
+* **Answer:**
+```java
+TreeMap<String, String> map = new TreeMap<>();
+map.put("Physics", "Dr. H. J. Bhabha");
+map.put("Mathematics", "Dr. C. S. Seshadri");
+map.put("Computer Science", "Dr. A. K. Choudhury");
+map.put("Chemistry", "Dr. C. N. R. Rao");
+
+String largestSubjectName = map.firstKey(); // Retrieves "Chemistry" in default order
+System.out.println(map.get(largestSubjectName)); // Prints Dr. C. N. R. Rao
+
+```
+
+
+
+---
+
+### 12. Filtering Map Keys by Prefix (`startsWith`)
+
+* **Question:** Iterate through a `TreeMap` of departments and print only the names of the departments that start with the letter `"C"`.
+* **Answer:**
+```java
+TreeMap<String, String> map = new TreeMap<>();
+map.put("Physics", "Dr. H. J. Bhabha");
+map.put("Mathematics", "Dr. C. S. Seshadri");
+map.put("Computer Science", "Dr. A. K. Choudhury");
+map.put("Chemistry", "Dr. C. N. R. Rao");
+
+for(Map.Entry<String, String> i : map.entrySet()) {
+    if(i.getKey().startsWith("C")) {
+        System.out.println(i.getKey()); // Prints Chemistry and Computer Science
+    }
+}
+
+```
