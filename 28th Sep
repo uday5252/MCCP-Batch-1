@@ -1,0 +1,68 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        // s = "apbccpa"
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        // "apbccpa"
+       while(left < right)
+       {
+         if(s.charAt(left) == s.charAt(right))
+            {
+                // "apbccpa"
+                left++;//l = 2 ==> b
+                right--;//r = 4 ==> c
+            }
+            else
+            {
+                // If the characters left and right doesnt match
+
+                // "a p b(l) c c(r) p a"
+                // case 1 ==> remove b ==> making l point to c
+                // case 2 ==> remove c ==> making r point to c
+
+                boolean case1Result = checkLogic(s, left + 1, right);
+                boolean case2Result = checkLogic(s, left, right - 1);
+               
+                if(case1Result == true || case2Result == true )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+       }
+
+       return true;
+
+    }
+
+    public boolean checkLogic(String str, int left, int right)
+    {
+        // left = 3, right = 4
+        // "apbc(l)c(r)pa"
+
+        // whiel should run 4 times 
+       while(left < right)
+       {
+         if(str.charAt(left) != str.charAt(right))
+        {
+            return false;
+        }
+        else
+        {
+            // left and right char are same
+            left++;
+            right--;
+        }
+       }
+
+       return true;
+    }
+
+    // "apbc(l)rtc(r)pa"
+}
