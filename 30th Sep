@@ -1,0 +1,92 @@
+class Solution {
+    public String reverseVowels(String s) {
+       
+       char info[] = s.toCharArray();//[ 'h', 'e', 'l', 'l','o'  ] 
+
+       int left = 0;
+       int right = info.length - 1;
+
+        while(left < right)
+        {
+            boolean leftStatus = checkVowel(info[left]);//false(h)
+            boolean rightStatus = checkVowel(info[right]);//true(o)
+
+            if(leftStatus == false)
+            {
+                left++;
+            }
+            else if(rightStatus == false)
+            {
+            right--;
+            }
+            else
+            {
+            char temp = info[left];
+            info[left] = info[right];
+            info[right] = temp;
+            left++;
+            right--;
+            }
+            // [ 'h', 'o', 'l', 'l','e'  ] ==> "holle"
+        }
+
+    return new String(info);
+
+
+// [ 'h', 'o', 'l', 'l','e'  ] String(info) ==> "holle"
+       
+}
+
+    public boolean checkVowel(char recievedCharacter)
+    {
+        // recievedCharacter ==> o
+
+        char ch = Character.toLowerCase(recievedCharacter);
+         
+        return ch == 'a' || ch == 'e' ||
+        ch == 'i' || ch == 'o'
+        || ch == 'u';
+     
+
+
+
+    }
+
+}
+===================================================
+class Solution {
+    public String reverseOnlyLetters(String s) {
+
+        // s = "Ra-ju"
+        char info[] = s.toCharArray();// [ 'R', 'a', '-', 'j', 'u' ]
+        
+        int left = 0;
+        int right = info.length - 1;
+
+        while(left < right)
+        {
+                if(!Character.isLetter(info[left]))
+            {
+                left++;
+            }
+            else if(!Character.isLetter(info[right]))
+            {
+                right--;
+            }
+            else
+            {
+                // left and right both are letters
+                char temp = info[left];
+                info[left] = info[right];
+                info[right] = temp;
+                left++;
+                right--;
+            }
+
+        }
+        // [ 'R', 'a', '-', 'j', 'u' ] ==> [ 'u', 'j', '-', 'a', 'R' ] 
+        // ==> "uj-aR"
+
+        return new String(info);
+    }
+}
