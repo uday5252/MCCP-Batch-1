@@ -90,3 +90,40 @@ class Solution {
         return new String(info);
     }
 }
+============
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+
+        int i = 0;// s
+        int j = 0;// t
+
+        // s = "abc"
+        // t = "a"
+
+        // i=1, j=1
+
+        while( i < s.length() && j < t.length())
+        {
+            if(s.charAt(i) == t.charAt(j))
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+
+        if(i == s.length())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        
+    }
+}
