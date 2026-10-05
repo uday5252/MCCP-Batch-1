@@ -40,3 +40,33 @@ class Solution {
         
     }
 }
+
+======================
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        
+       int windowLeft = 0;
+	        int windowSum = 0;//10
+	        int maxSum = Integer.MIN_VALUE;
+
+	    for( int windowRight = 0; windowRight < nums.length; windowRight++)
+	        {
+	           // [ 10, 2, 4, 20, 2, 4, 5 ]
+         windowSum = windowSum + nums[windowRight];
+//         System.out.println(windowSum);
+         
+         if(windowRight - windowLeft + 1 == k)
+	           {
+	             maxSum = Math.max(windowSum, maxSum);
+	             
+                 windowSum = windowSum - nums[windowLeft];
+	             windowLeft++;
+	            }
+         
+
+	        }
+	    
+	    return (double)maxSum / k;
+
+    }
+}
