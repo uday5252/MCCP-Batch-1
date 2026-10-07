@@ -1,0 +1,35 @@
+class Solution {
+    public int countGoodSubstrings(String s) {
+        // x y z z a z
+
+        int windowLeft = 0;
+        int goodSubstringsCount = 0;
+
+        for(int windowRight = 0; 
+        windowRight < s.length(); windowRight++)
+        {
+            // get the window length
+            int windowLength = windowRight - windowLeft + 1;
+
+            if(windowLength == 3)
+            {
+                // 3 elements are in the window
+                // access those 3 characters
+                char firstChar = s.charAt(windowLeft);
+                char middleChar = s.charAt(windowLeft + 1);
+                char lastChar = s.charAt(windowRight);
+
+                if(firstChar != middleChar &&
+                firstChar != lastChar && 
+                middleChar != lastChar )
+                {
+                    goodSubstringsCount++;
+                }
+                windowLeft++;
+            }
+        }
+
+        return goodSubstringsCount;
+
+    }
+}
