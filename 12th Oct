@@ -1,0 +1,32 @@
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+
+     int windowLeft = 0;
+     int maxLength = 0;//2
+     int zeroesCount = 0;
+
+     for(int windowRight = 0; windowRight < nums.length; windowRight++)
+     {
+
+        if(nums[windowRight] == 0)
+        {
+            zeroesCount++;
+        }
+
+        while(zeroesCount > k)
+        {
+            if(nums[windowLeft] == 0)
+            {
+                zeroesCount--;
+            }
+            windowLeft++;
+        }
+
+        int windowLength = windowRight - windowLeft + 1;
+        maxLength = Math.max(windowLength, maxLength); 
+     }
+
+     return maxLength;
+
+    }
+}
