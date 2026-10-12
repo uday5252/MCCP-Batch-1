@@ -25,6 +25,38 @@ class Solution {
         int windowLength = windowRight - windowLeft + 1;
         maxLength = Math.max(windowLength, maxLength); 
      }
+===========================================
+class Solution {
+    public int numOfSubarrays(int[] arr, int k, int threshold) {
+        
+        int windowLeft = 0;
+        int windowSum = 0;//6
+        // 2, 2, 1, 5, 5, 5, 5, 8
+        int count = 0;
+
+        for(int windowRight = 0; windowRight < arr.length; windowRight++)
+        {
+            windowSum = windowSum + arr[windowRight];
+
+            if(windowRight - windowLeft + 1 == k)
+            {
+                int windowAvg = windowSum / k;
+
+                if(windowAvg >= threshold)
+                {
+                    count++;
+                }
+
+                windowSum = windowSum - arr[windowLeft];
+
+                windowLeft++;
+            }
+
+        }
+
+        return count;
+    }
+}
 
      return maxLength;
 
